@@ -1,0 +1,145 @@
+
+@import '../../../assets/defaults.scss';
+
+$color-error: #F1245C;
+$color-alert: #F0B111;
+$color-success: #1DDA61;
+$color-primary: #098dcd;
+$color-shadow: #098dcd;
+$toaster-width: 600px;
+$toaster-offset: 25px;
+$z-index-toaster: 100;
+$toaster-shadow: 0 1px 10px rgba($color-shadow, 0.2);
+// toaster notification type, color and icon
+$toaster-types: ((error, $color-error, '\E832'),
+  (success, $color-success, '\E834'),
+  (alert, $color-alert, '\E831'),
+  (info, $color-primary, '\E833'));
+
+.toast-container {
+  position: fixed;
+  z-index: $z-index-toaster;
+  bottom: $toaster-offset;
+  left: 50px;
+}
+
+.toast-content {
+  display: inline-block;
+  width: 95%;
+}
+
+.toast-wrapper {
+  display: inline-block;
+  clear: both;
+  max-width: $toaster-width;
+  min-width: 300px;
+  margin-top: 5px;
+
+  @each $toaster-type,
+  $toater-color,
+  $toaster-icon in $toaster-types {
+    #{'&.' + $toaster-type} {
+      .notification-message {
+        padding-left: 20px;;
+        border-color: $toater-color;
+      }
+    }
+  }
+
+  &.click-enabled {
+    cursor: pointer;
+  }
+}
+
+.show {
+  animation: toaster-slide 0.6s 1 linear;
+}
+
+.toaster-notification {
+  border: 1px solid $color-background-light;
+  border-left: none;
+  border-radius: $border-radius;
+  background-color: #ffffff;
+  box-shadow: $toaster-shadow;
+}
+
+.notification-message {
+  padding: 0 65px 0 0;
+  border-left: 6px solid $color-primary;
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  min-height: 90px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  position: relative;
+
+  >.f-icon {
+    font-size: 35px;
+    width: 75px;
+    text-align: center;
+    //flex: 1 0px;
+    flex-shrink: 0;
+  }
+
+  .i-name {
+    //flex: 1 0px;
+    flex-grow: 1;
+    line-height: 1.2;
+    font-size: 15px;
+    color: $main-gray;
+    @include no-select;
+  }
+}
+
+.message-text {
+  padding: 15px 0;
+}
+
+.close-notification {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 25px;
+  font-size: 14px;
+  color: $color-primary;
+  cursor: pointer;
+
+  .icon-close {
+    position: relative;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -6px;
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    background: #eff2f4;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  &:hover:before {
+    opacity: 1;
+  }
+}
+
+@keyframes toaster-slide {
+  0% {
+    transform: translate(-600px, 0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translate(25px, 0);
+    opacity: 1;
+  }
+}

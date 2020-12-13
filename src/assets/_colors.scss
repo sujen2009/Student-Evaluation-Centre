@@ -1,0 +1,104 @@
+/*====================
+ PALETTE!
+======================*/
+
+// PRIMARY
+$color-primary: #098dcd;
+$color-primary-light: lighten($color-primary, 53%);
+
+// PRIMARY VARIATIONS
+$primary-variation: #1f6384;
+$primary-variation-light: #e6f6fe;
+
+// SECONDARY
+$turquoise: #29d6d3;
+
+// NEUTRALS
+$main-black: #3f4452;
+$main-gray: lighten(#465461, 25%);
+$main-gray-dark: #627588;
+$main-gray-darker: #516170;
+$main-gray-light: #aebac5;
+$main-silver: #d5dbe1;
+$main-gray-bright: #eff2f4;
+
+// DON'T USE THESE COLORS ARE DEPRECATED
+$slate-gray: darken($main-gray, 20%);
+$medium-gray: darken($main-gray, 12%);
+$silver: lighten($main-gray, 28%);
+$white1: lighten($main-gray, 35%);
+$white2: lighten($main-gray, 37%);
+
+// SEMANTIC COLORS
+// cancel
+$color-cancel: $main-gray; // DEPRECATED
+// error/danger
+$color-danger: #f1245c;
+//success
+$color-success: #1dda61;
+//error
+$color-error: $color-danger;
+//alert
+$color-alert: #f0b111;
+
+// DON'T USE THESE COLORS ARE DEPRECATED
+$color-blue: #5aa6ff;
+$color-green: #29d6d3;
+$color-yellow: #f0b111;
+$color-pink: #f74cb5;
+$color-navyblue: #2689cb;
+$color-orange: #ff9800;
+/*====================
+ COLOR BY FUNCTION
+======================*/
+
+// COLOR TEXT
+$color-title-h1: darken($main-gray, 20%);
+$color-title-h2: $main-gray;
+$color-title-h3: $main-gray;
+$color-title-ui: $color-primary;
+$color-paragraph: $main-black;
+$color-label: darken($main-gray, 12%);
+$color-tab: darken($main-gray, 12%);
+$color-tag: darken($main-gray, 20%);
+$color-dropdown-text: darken($main-gray, 12%);
+// COLOR BACKGROUND
+$color-background-light: lighten($main-gray, 37%);
+$color-background-medium: lighten($main-gray, 33%);
+// COLOR LINES
+$color-line-light: lighten($main-gray, 35%);
+$color-line-medium: lighten($main-gray, 28%);
+// COLOR SHADOW
+$color-shadow: $main-black;
+// COLOR UI ICONS
+$color-ui-icons: $main-gray;
+$color-static-icons: $color-primary;
+// TABLES
+$color-table-border: lighten($main-gray, 30%);
+$color-table-header: lighten($main-gray, 37%);
+$color-table-header-text: $main-gray;
+$color-table-row-hover: #f0f8fa;
+$color-table-menu-icon: #448fa3;
+// INPUTS
+$color-border-input: $color-line-medium;
+$color-placeholder: lighten($main-gray, 10%);
+// MODAL
+$color-header-modal: $color-line-light;
+$color-overlay: rgba(darken($main-gray, 20%), 0.6);
+// COLOR BUTTONS
+$color-hover-button: $main-black;
+// COLOR BOXES
+$color-line-box: $color-line-medium;
+// COLOR SCROLL BAR
+$color-scrollbar-active: $slate-gray;
+$color-scrollbar-inactive: rgba($slate-gray, 0.5);
+$color-scrollbat-track: $white2;
+//color for selected range picker bar
+$color-dark-blue: $primary-variation;
+// Color for hotspot ovals 
+$hotspot-color:#29d6d3;
+$outer-hotspot-color:rgba(47, 223, 220, 0.5);
+$inner-hotspot-color:#00fffb;
+// readonly
+$readonly-bgcolor: #eee;
+$readonly-color: #aaa;

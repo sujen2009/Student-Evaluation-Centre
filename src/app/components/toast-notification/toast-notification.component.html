@@ -1,0 +1,25 @@
+<div class="toast-container">
+  <div *ngFor="let toast of toasts">
+    <div
+      class="toast-wrapper"
+      [title]="toast.toolTip || ''"
+      [ngClass]="toastTypeClasses[toast.type]"
+      (click)="toastClicked(toast)"
+      [class.click-enabled]="!!toast.clickHandler"
+    >
+      <div class="toaster-notification">
+        <div class="notification-message">
+          <div class="i-name">
+            <ng-container [ngSwitch]="toast.contentType">
+              <div class="message-text" *ngSwitchCase="toastContentType.CUSTOM_CONTENT" [innerHTML]="toast.content"></div>
+              <div class="message-text" *ngSwitchCase="toastContentType.DEFAULT">{{ toast.content }}</div>
+            </ng-container>
+          </div>
+          <span *ngIf="toast.closeable" title="Close" (click)="close(toast)" class="close-notification"
+            ><i class="f-icon icon-close"></i
+          ></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

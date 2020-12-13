@@ -1,0 +1,83 @@
+<div
+  *ngIf="!isLoading && showQuestions"
+  (scroll)="onScroll($event)"
+  [class.hang-timer]="hangTimer"
+>
+  <div class="countdown-container">
+    <countdown
+      *ngIf="questions.time"
+      #cd
+      [config]="{
+        leftTime: questions.time * 60,
+        notify: [(questions.time * 60) / 2]
+      }"
+      (event)="handleEvent($event)"
+    ></countdown>
+  </div>
+
+  <div class="content" role="main">
+    <h3>
+      {{ questions.intro }}
+    </h3>
+    <ng-container *ngIf="!isLoading">
+      <div *ngFor="let question of questions.questions">
+        <div [innerHTML]="question.qns"></div>
+
+        <input type="hidden" #selection />
+
+        <div class="card-container">
+          <div
+            [class.highlight-card]="
+              answer[question.qid] && answer[question.qid] === option.optionid
+            "
+            (click)="onAnswer(question.qid, option.optionid)"
+            *ngFor="let option of question.options; let i = index"
+            class="card card-small"
+            tabindex="i"
+          >
+            <span [innerHTML]="option.option"></span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <button
+      *ngIf="!isLoading"
+      (click)="submitUserAnswer()"
+      mat-raised-button
+      color="primary"
+    >
+      Submit
+    </button>
+  </div>
+</div>
+<ui-loader *ngIf="isLoading"></ui-loader>
+<div class="content" *ngIf="!isLoading && !showQuestions">
+  <div class="pre-exam-info">
+    <mat-card class="example-card" *ngIf="!examNotAssigned">
+      <mat-card-content>
+        <p>
+          There will be {{ questions.questions.length }} multiple choice
+          questions. You will have {{ questions.time }} minute to choose the
+          correct answers. Make sure you have stable internet connection. Do not
+          refresh or close the browser as you will not be able to restart the
+          test again. As soon as time completes your answers will be submitted
+          automatically. Your time will start as soon as you click the button
+          below.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="startTest()" mat-raised-button color="primary">
+          Begin
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card class="example-card" *ngIf="examNotAssigned">
+      <mat-card-content>
+        <p>
+          Exam is not assigned to you yet. Please contact administrator for more
+          detail.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

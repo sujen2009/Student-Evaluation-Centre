@@ -1,0 +1,15 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <span>Student Evaluation Center</span>
+  <div class="spacer"></div>
+  <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
+  </a>
+  <div *ngIf="userDetail" class='user-profile'>
+    Welcome {{userDetail.name}}, <span class="logout" (click)="logout()">Logout</span>
+  </div>
+</div>
+
+
+
+<router-outlet></router-outlet>
+<ui-toast-notification></ui-toast-notification>

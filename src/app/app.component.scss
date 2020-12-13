@@ -1,0 +1,48 @@
+
+.toolbar {
+  height: 60px;
+  margin: -8px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  padding-left: 20px;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo {
+  height: 40px;
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo:hover {
+  opacity: 0.8;
+}
+
+.user-profile {
+  margin-right: 20px;
+  font-weight: normal;
+
+  .logout {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+
+.spacer {
+  flex: 1;
+}
+
+
+
+::ng-deep {
+  ui-loader {
+    width: 80px;
+    height: 60px;
+  }
+}
